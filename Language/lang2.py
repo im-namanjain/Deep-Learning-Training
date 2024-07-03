@@ -12,11 +12,11 @@ from transformers import pipeline
 
 #English to Dutch 
 
-translation_pipeline=pipeline("translation_en_to_de")
-data="My Name is Naman Jain"
-results=translation_pipeline(data)
-print("In English::",data)
-print("In Dutch::",results)
+# translation_pipeline=pipeline("translation_en_to_de")
+# data="My Name is Naman Jain"
+# results=translation_pipeline(data)
+# print("In English::",data)
+# print("In Dutch::",results)
 
 #English to Hindi
 
@@ -25,11 +25,12 @@ data="My Name is Naman Jain"
 
 def translate_transformers(from_data):
     results=translation_pipeline(from_data)
-    return results
+    res=results[0]['translation_text']
+    return res
 translate_transformers(data)
 
 # create gradio
-translate=gr.Interface(inputs=gr.Textbox(lines=2,outputs='texts',placeholder="Text to Translate"),fn=translate_transformers)
+translate=gr.Interface(inputs=gr.Textbox(lines=2,placeholder="Text to Translate"),fn=translate_transformers,outputs='text')
 translate.launch(share=False)
-print("In English::",data)
-print("In Hindi::",results)
+# print("In English::",data)
+# print("In Hindi::",translate)
