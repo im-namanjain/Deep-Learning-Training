@@ -32,5 +32,5 @@ translate_transformers(data)
 # create gradio
 translate=gr.Interface(inputs=gr.Textbox(lines=2,placeholder="Text to Translate"),fn=translate_transformers,outputs='text')
 translate.launch(share=False)
-# print("In English::",data)
-# print("In Hindi::",translate)
+print("In English::",data)
+print("In Hindi::",translate)
